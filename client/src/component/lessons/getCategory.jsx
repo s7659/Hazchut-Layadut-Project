@@ -16,11 +16,11 @@ if(isSuccess){
 },[isSuccess])
 console.log(data);
 //debugger
-// const category=data.map((e)=>e.Name)
+const category=data.map((e)=>e.Name)
 return(
     <>
     
-    {/* {console.log(category)} */}
+    {console.log(category)}
     </>
 )
 

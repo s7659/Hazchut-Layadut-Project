@@ -243,13 +243,13 @@ function NavBarUsers() {
         },
         {
             label: ' עובדים',
-            icon: 'pi-address-book',
+            icon: 'pi pi-address-book',
             url:'/homeManager/managerList'
 
         },
         {
             label: ' משתמשים',
-            icon: 'pi-address-book',
+            icon: 'pi pi-address-book',
             url:'/homeManager/usersList'
 
         },
