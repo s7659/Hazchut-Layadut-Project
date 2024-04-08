@@ -1,12 +1,13 @@
 import { Menubar } from 'primereact/menubar';
 import FromToken from './app/fromToken';
+import 'primeicons/primeicons.css';
 
 function NavBarUsers() {
     const {roles}=FromToken()
         const items = [
         {
             label: 'דף הבית',
-            icon: 'pi pi-home',
+            icon: 'pi pi-building-columns',
             url:'/homeUsers'
         },
         {
@@ -242,13 +243,13 @@ function NavBarUsers() {
         },
         {
             label: ' עובדים',
-            icon: 'pi pi-user',
+            icon: 'pi-address-book',
             url:'/homeManager/managerList'
 
         },
         {
             label: ' משתמשים',
-            icon: 'pi pi-user',
+            icon: 'pi-address-book',
             url:'/homeManager/usersList'
 
         },

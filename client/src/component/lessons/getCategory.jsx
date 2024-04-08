@@ -9,15 +9,18 @@ useEffect(()=>
 
 {
 if(isSuccess){
-    
+
 
 
 }
 },[isSuccess])
-const category=data.map((e)=>e.Name)
+console.log(data);
+//debugger
+// const category=data.map((e)=>e.Name)
 return(
     <>
-    {console.log(category)}
+    
+    {/* {console.log(category)} */}
     </>
 )
 
