@@ -3,7 +3,8 @@ const managerApiSlice =apiSlice.injectEndpoints({
  endpoints:(build)=>({
     getManagers:build.query({
         query:()=>({
-          url:"/api/user/managers"  
+          url:"/api/user/managers"  ,
+          providesTags: ["Manager"]
         })
     }), 
     addManager:build.mutation({
@@ -20,9 +21,11 @@ const managerApiSlice =apiSlice.injectEndpoints({
         }) 
   }),
   updateManager:build.mutation({
-    query:(id)=>({
-        url:`/api/user/${id}` , 
-        method:"PUT"
+    query:(data)=>({
+        url:`/api/user` , 
+        method:"PUT",
+        body:data,
+        invalidatesTags: ["Manager"]
       }) 
 })
  })

@@ -12,12 +12,12 @@ import UpDateManager from "./upDateManager";
 function CardManager(props) {
 
     const [update, setUpdate] = useState(0);
-    {update==0?<UpDateManager update/>:<CardManager/>}
+    {update!=0?<UpDateManager update/>:<CardManager/>}
     const [deleteManager, {isError, isSuccess, error}] =useDeleteManagerMutation()
     // const [updateManager, {isError, isSuccess, error}] =useUpdateManagerMutation()
     const footer = (
         <>
-            <Button  icon="pi pi-user-edit" style={{marginRight: '30%' , marginLeft: '3em' }} onClick={()=>{setUpdate(props.data._id);props.refetch()}}/>
+            <UpDateManager data={props.data} refetch={props.refetch}/> 
             <Button  severity="secondary" icon="pi pi-trash" style={{ marginLeft: '30%',  }} onClick={()=>{deleteManager(props.data._id);props.refetch()}}/>
         </>
     );

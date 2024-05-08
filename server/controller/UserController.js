@@ -48,9 +48,9 @@ const createNewUser = async (req, res) => {
 }
 
 const upDateUser = async (req, res) => {
-    const { id, name, userName, email, phone, password, roles } = req.body
-
-    if (!id || !name || !userName || !password) {
+    const { _id, name, userName, email, phone, password, roles } = req.body
+    console.log(_id, name, userName, password);
+    if (!_id || !name || !userName || !password) {
         return res.status(400).json({ message: "fields are required" })
     }
     const a=['admin','refresh']
@@ -58,9 +58,9 @@ const upDateUser = async (req, res) => {
         if(!tmp?.length){
             return res.status(400).json({ message: "Invalid user" })
         }
-    const users = await Users.find({}, { userName: userName }).lean()
-    if (!users) {
-        const user = await Users.findById(id).exec()
+        
+        const user = await Users.findById(_id);
+    
 
         if (!user) {
             return res.status(400).json({ message: "user not found" })
@@ -72,14 +72,15 @@ const upDateUser = async (req, res) => {
         user.phone = phone
         user.roles = roles
         
-        const updateUser = await users.save()
-    }
-    else {
+        const updateUser = await user.save()
+      
+   
+   if(!updateUser) {
         return res.status(400).json({ message: "invalid user" })
     }
     res.json(`${updateUser.name} updated`)
 }
-
+ 
 
 const deleteUser = async (req, res) => {
     const { id } = req.params
