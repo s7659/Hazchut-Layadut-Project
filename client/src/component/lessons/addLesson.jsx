@@ -175,7 +175,7 @@ const AddLesson = () => {
                                         <span className="p-float-label">
                                             <InputText id={field.name} value={onUpload} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
                                             <Toast ref={toast1}></Toast>
-                                            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" maxFileSize={1000000} onUpload={onUpload} />
+                                            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="video/*" maxFileSize={1000000} onUpload={onUpload} />
                                         </span>
                                         {getFormErrorMessage(field.name)}
                                         {/*  className="card flex justify-content-center" */}
