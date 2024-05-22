@@ -17,6 +17,7 @@ app.use("/api/user",require("./router/userRouter"))
 app.use("/api/auth",require("./router/authRouter"))
 app.use("/api/lesson",require("./router/lessonRouter"))
 app.use("/api/category",require("./router/CategoryRouter"))
+app.use("/api/messages",require("./router/messageRouter"))
 
 app.get('/',(req,res)=>{
     res.send("Home Page")

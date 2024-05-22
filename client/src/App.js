@@ -11,7 +11,7 @@ import Tehilim from './component/lessons/tehilim'
 import Halacha from './component/lessons/halacha'
 import Gmara from './component/lessons/gmara'
 import Torah from './component/lessons/Torah';
-import Messages from './component/messages'
+import Messages from './component/Messages/messages'
 import Entry from './component/entry'
 import FromToken from './component/app/fromToken';
 import NavBar from './component/navBar'

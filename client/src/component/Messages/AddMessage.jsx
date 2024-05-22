@@ -7,15 +7,16 @@ import { Controller, useForm } from 'react-hook-form';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
 import { Editor } from "primereact/editor";
+import { Message } from "primereact/message";
 
 const  AddMessage=()=> {
     const [visible, setVisible] = useState(false);
     const toast = useRef(null);
-    const [register, {isError, isSuccess, error}] =useAddMessageMutation()
+    const [message, {isError, isSuccess, error}] =useAddMessageMutation()
     const show = () => {
         toast.current.show({ severity: 'success', summary: 'הודעה נוספה בהצלחה!', detail: getValues('value') });
     };
-    const [text, setText] = useState('<div>Hello World!</div><div>PrimeReact <b>Editor</b> Rocks</div><div><br></div>');
+    const [text, setText] = useState('');
     const defaultValues = {
         title: '',
         message:'',
@@ -33,7 +34,8 @@ const  AddMessage=()=> {
         console.log("111111");
         data.name && show();
         console.log(data);
-        register(data)
+        data.message=text;
+        message(data)
         setVisible(false)
         
     };
@@ -82,6 +84,7 @@ const  AddMessage=()=> {
                         />
 
             <div className="card">
+                
                 <   Editor value={text} onTextChange={(e) => setText(e.htmlValue)} headerTemplate={header} style={{ height: '320px' }} />
             </div>
                        

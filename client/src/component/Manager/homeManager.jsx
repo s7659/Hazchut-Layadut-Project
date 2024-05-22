@@ -2,7 +2,7 @@
  import AddManager, {HeadlessDemo} from './addManager'
  import AddLesson from "../lessons/addLesson";
  import React, { useState } from "react";
-import AddMessage from "../AddMessage";
+import AddMessage from "../Messages/AddMessage";
 function HomeManager() {
   
     return (<>

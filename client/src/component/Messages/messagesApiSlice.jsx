@@ -1,4 +1,4 @@
-import apiSlice  from "./app/apiSlice";
+import apiSlice  from "../app/apiSlice";
 const messageApiSlice =apiSlice.injectEndpoints({
  endpoints:(build)=>({
     getMessages:build.query({

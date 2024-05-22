@@ -1,4 +1,5 @@
-const Message = require("../models/messages");
+const Message = require("../models/Messages");
+
 
 const getAllMessages=async(req,res)=>{
     const messages=await Message.find().lean()
@@ -7,10 +8,13 @@ const getAllMessages=async(req,res)=>{
 
 const createNewMessage=async(req,res)=>{
     const{title,message,image}=req.body
+    console.log(req.body)
     if(!title||!message){
+        console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
         return res.status(404).json({message:'title and message is required'})
     }
     const message1=await Message.create({title,message,image})
+
     if(message1)
     {
         return res.status(201).json({message:'New message created'})

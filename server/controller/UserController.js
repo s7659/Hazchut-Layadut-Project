@@ -18,8 +18,6 @@ const getAllUsers = async (req, res) => {
 
 const createNewUser = async (req, res) => {
     const { name, userName, email, phone, password, roles } = req.body
-
-    console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjj");
     if (!name || !userName || !password) {
         return res.status(400).json({ message: "fields are required" })
     }
