@@ -9,6 +9,7 @@ function HomeManager() {
     
     <AddManager/>
     <AddLesson/>
+    <AddMessage/>
       </>
     );
   }

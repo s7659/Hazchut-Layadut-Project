@@ -15,7 +15,7 @@ import { useGetCategoryQuery } from './CategoryApiSlice'
 const AddLesson = () => {
     const [selectedType, setSelectedType] = useState('טקסט');
     const [selectedFile, setSelectedFile] = useState();
-
+    const [valeu, setValue] = useState('');
     const [selectedCategory, setselectedCategory] = useState('');
     const [visible, setVisible] = useState(false);
     const [category,setCategory]=useState([])
@@ -25,17 +25,17 @@ const AddLesson = () => {
         toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: getValues('value') });
     };
     const toast1 = useRef(null);
-    const onUpload = ({files}) => {
-        debugger
-        const file1 = files[0];
-        setSelectedFile(file1);
-    };
+    // const onUpload = ({files}) => {
+    //     debugger
+    //     const file1 = files[0];
+    //     setSelectedFile(file1);
+    // };
     const defaultValues = {
         name: '',
         code: '',
         categoryCode: '',
         type: '',
-        // path: '',
+        path: '',
         active: 'true',
         present: ''
     };
@@ -102,7 +102,15 @@ const AddLesson = () => {
         }
     ];
 
-
+    const onUpload = (event) => {
+        const file = event.files[0];
+        setSelectedFile(file); // Store the selected file object
+        if (file) {
+            // Store the path of the selected file in the form data
+            const path = URL.createObjectURL(file);
+            setValue('path', path); // Assuming you have access to setValue method from react-hook-form to update the form data
+        }
+    };
 
     const getFormErrorMessage = (name) => {
         return errors[name] ? <small className="p-error">{errors[name].message}</small> : <small className="p-error">&nbsp;</small>;
