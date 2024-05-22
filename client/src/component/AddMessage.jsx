@@ -15,7 +15,7 @@ const  AddMessage=(props)=> {
     const show = () => {
         toast.current.show({ severity: 'success', summary: 'הודעה נוספה בהצלחה!', detail: getValues('value') });
     };
-
+    const [text, setText] = useState('<div>Hello World!</div><div>PrimeReact <b>Editor</b> Rocks</div><div><br></div>');
     const defaultValues = {
         title: '',
         message:'',
@@ -41,10 +41,20 @@ const  AddMessage=(props)=> {
     const getFormErrorMessage = (name) => {
         return errors[name] ? <small className="p-error">{errors[name].message}</small> : <small className="p-error">&nbsp;</small>;
     };
+    const renderHeader = () => {
+        return (
+            <span className="ql-formats">
+                <button className="ql-bold" aria-label="Bold"></button>
+                <button className="ql-italic" aria-label="Italic"></button>
+                <button className="ql-underline" aria-label="Underline"></button>
+            </span>
+        );
+    };
 
+    const header = renderHeader();
     return (
         <div className="card flex justify-content-center">
-            <Button label="הוסף מנהל" icon="pi pi-user" onClick={() => setVisible(true)} />
+            <Button label="הוסף הודעה" icon="pi pi-user" onClick={() => setVisible(true)} />
             <Toast ref={toast} />
             <Dialog
                 visible={visible}
@@ -56,84 +66,25 @@ const  AddMessage=(props)=> {
                       
 
                         <Controller
-                            name="name"
+                            name="title"
                             control={control}
-                            rules={{ required: 'name is required.' }}
+                            rules={{ required: 'title is required.' }}
                             render={({ field, fieldState }) => (
                                 <>
                                     <label htmlFor={field.name} className={classNames({ 'p-error': errors.name })}></label>
                                     <span className="p-float-label">
                                         <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
-                                        <label htmlFor={field.name}>שם</label>
+                                        <label htmlFor={field.name}>ההודעה  שם</label>
                                     </span>
                                     {getFormErrorMessage(field.name)}
                                 </>
                             )}
                         />
 
-                        <Controller
-                            name="userName"
-                            control={control}
-                            rules={{ required: 'userName is required.' }}
-                            render={({ field, fieldState }) => (
-                                <>
-                                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.name })}></label>
-                                    <span className="p-float-label">
-                                        <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
-                                        <label htmlFor={field.name}>שם משתמש</label>
-                                    </span>
-                                    {getFormErrorMessage(field.name)}
-                                </>
-                            )}
-                        />
-
-                        <Controller
-                            name="password"
-                            control={control}
-                            rules={{ required: 'password is required.' }}
-                            render={({ field, fieldState }) => (
-                                <>
-                                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.name })}></label>
-                                    <span className="p-float-label">
-                                        <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
-                                        <label htmlFor={field.name}>סיסמא</label>
-                                    </span>
-                                    {getFormErrorMessage(field.name)}
-                                </>
-                            )}
-                        />
-
-                        <Controller
-                            name="phone"
-                            control={control}
-                            rules={{ required: 'phone is required.' }}
-                            render={({ field, fieldState }) => (
-                                <>
-                                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.name })}></label>
-                                    <span className="p-float-label">
-                                        <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
-                                        <label htmlFor={field.name}>פלאפון</label>
-                                    </span>
-                                    {getFormErrorMessage(field.name)}
-                                </>
-                            )}
-                        />
-
-                        <Controller
-                            name="email"
-                            control={control}
-                            rules={{ required: 'email is required.' ,pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'Invalid email address. E.g. example@email.com' }}}
-                            render={({ field, fieldState }) => (
-                                <>
-                                    <label htmlFor={field.name} className={classNames({ 'p-error': errors.name })}></label>
-                                    <span className="p-float-label">
-                                        <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
-                                        <label htmlFor={field.name}>מייל</label>
-                                    </span>
-                                    {getFormErrorMessage(field.name)}
-                                </>
-                            )}
-                        />
+            <div className="card">
+                <   Editor value={text} onTextChange={(e) => setText(e.htmlValue)} headerTemplate={header} style={{ height: '320px' }} />
+            </div>
+                       
                     <div className="flex align-items-center gap-2">
                         <Button label=" הוסף " type="submit" icon="pi pi-check" />
                         <Button onClick={()=>setVisible(false)} label=" בטל " icon="pi pi-times" />
@@ -147,6 +98,11 @@ const  AddMessage=(props)=> {
             ></Dialog>
         </div>
     )
+    
 }
-export default AddManager      
+export default AddMessage      
+
+
+   
+
 
