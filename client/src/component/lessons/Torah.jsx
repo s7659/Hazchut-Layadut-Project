@@ -1,4 +1,7 @@
 import { useParams } from "react-router-dom";
+import AdvancedDemo from './CardLesson';
+
+
 function Torah() {
   const chumash=useParams()
 
@@ -15,7 +18,8 @@ console.log(chumash);
        Tora,
        {chumash}
     </div>
-    
+    {<AdvancedDemo/>}
+
     </>
     );
   }

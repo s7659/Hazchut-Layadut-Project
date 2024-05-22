@@ -3,12 +3,13 @@ import { Outlet } from "react-router-dom";
 
 
 function Messages() {
+  
     return (
     
     <>
      
       <div>messages</div>
-      {/* <Outlet/> */}
+     
       </>
     );
   }

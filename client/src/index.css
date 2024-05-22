@@ -1,4 +1,4 @@
-html {
+/* html {
   font-size: 14px;
 }
 
@@ -37,6 +37,59 @@ body {
   padding: 1rem;
   border-radius: 10px;
   margin-bottom: 2rem;
+  /* minWidth: 90%; 
+  min-width: 100%;
+} */
+*/
+
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: normal;
+  background: url("./component/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--text-color);
+  padding: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+}
+
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.card1 {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  direction: rtl;
+}
+
+.card2 {
+  background: var(--surface-card);
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
   /* minWidth: 90%; */
   min-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .card,
+  .card1,
+  .card2 {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 }

@@ -1,8 +1,11 @@
+import AdvancedDemo from './CardLesson';
+
 
 function Halacha() {
     return (
     <>
     <div> halacha</div>
+    {<AdvancedDemo/>}
 
     </>
     );

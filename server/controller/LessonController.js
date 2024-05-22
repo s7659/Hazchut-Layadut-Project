@@ -8,10 +8,11 @@ const getAllLessons=async(req,res)=>{
 }
 
 const createNewLesson=async(req,res)=>{
-    const{name,code,categoryCode,type,path,active,present}=req.body
-    if(!name||!code||!path){
+    const{name,code,categoryCode,type,active,present}=req.body
+    if(!name||!code||!req.file){
         return res.status(404).json({message:'Code and name is required'})
     }
+    const path=eq.file.path
     const date=new Date()
     const duplicate=await Lesson.findOne({path}).lean()
     if(duplicate){
@@ -63,6 +64,7 @@ const updateLesson=async(req,res)=>{
     if(!Code||!Name){
         return res.status(400).json({message:'fields are required'})
     }
+    
     const lesson=await Lesson.findOne(code).exec()
     if(!lesson){
         return res.status(400).json({message:"lesson not found"})

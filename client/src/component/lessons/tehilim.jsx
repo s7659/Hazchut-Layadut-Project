@@ -1,5 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import AdvancedDemo from './CardLesson';
+
+
 function Tehilim() {
 
   const navigate=useNavigate()
@@ -7,8 +10,9 @@ function Tehilim() {
    return (
    <>
    <div>
-       
-       <button onClick={a}>to ask</button>
+   {<AdvancedDemo/>}
+
+       {/* <button onClick={a}>to ask</button> */}
    </div>
    <Outlet/>
    </>

@@ -14,6 +14,8 @@ import { useGetCategoryQuery } from './CategoryApiSlice'
 
 const AddLesson = () => {
     const [selectedType, setSelectedType] = useState('טקסט');
+    const [selectedFile, setSelectedFile] = useState();
+
     const [selectedCategory, setselectedCategory] = useState('');
     const [visible, setVisible] = useState(false);
     const [category,setCategory]=useState([])
@@ -23,15 +25,17 @@ const AddLesson = () => {
         toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: getValues('value') });
     };
     const toast1 = useRef(null);
-    const onUpload = () => {
-        toast1.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+    const onUpload = ({files}) => {
+        debugger
+        const file1 = files[0];
+        setSelectedFile(file1);
     };
     const defaultValues = {
         name: '',
         code: '',
         categoryCode: '',
         type: '',
-        path: '',
+        // path: '',
         active: 'true',
         present: ''
     };
@@ -46,6 +50,30 @@ const AddLesson = () => {
     const onSubmit = (data) => {
         data.name && show();
         console.log(data);
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('code', data.code);
+        formData.append('categoryCode', data.categoryCode);
+        formData.append('path', selectedFile);
+        formData.append('type', data.type);
+        formData.append('active', data.active);
+        formData.append('present', data.present);
+
+        try {
+            const response =  register(formData).unwrap();
+            debugger
+            console.log('Upload response:', response);
+            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Video uploaded successfully' });
+            // reset();
+            setSelectedFile(null); // Clear the selected file after upload
+            // setMoveList(true);
+        } catch (uploadError) {
+            console.error('Upload error:', uploadError);
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to upload video' });
+        }
+        toast1.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+
+
         register(data)
         setVisible(false)
 
@@ -175,7 +203,7 @@ const AddLesson = () => {
                                         <span className="p-float-label">
                                             <InputText id={field.name} value={onUpload} className={classNames({ 'p-invalid': fieldState.error })} onChange={(e) => field.onChange(e.target.value)} />
                                             <Toast ref={toast1}></Toast>
-                                            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="video/*" maxFileSize={1000000} onUpload={onUpload} />
+                                            <FileUpload uploadHandler={onUpload} mode="basic" name="demo[]" url="/api/upload" accept="video/*" maxFileSize={1000000} onUpload={onUpload} />
                                         </span>
                                         {getFormErrorMessage(field.name)}
                                         {/*  className="card flex justify-content-center" */}

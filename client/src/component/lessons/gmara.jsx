@@ -1,7 +1,12 @@
+import GetCategory from "./getCategory";
+import AdvancedDemo from './CardLesson';
+
+
 function Gmara() {
     return (
     <>
-    <div> gmara</div>
+
+    {<AdvancedDemo/>}
 
     </>
     );

@@ -20,7 +20,6 @@ import ManagerList from './component/Manager/managerList'
 import UsersList from './component/Users/userList'
 import Layout from './component/app/layout';
 import GetCategory from './component/lessons/getCategory'
-import AdvancedDemo from './component/lessons/CardLesson';
 function App() {
   const {roles}=FromToken()
   return (
@@ -64,7 +63,6 @@ function App() {
         
 
       </Routes>
-      {<AdvancedDemo/>}
 
   </>
   );
