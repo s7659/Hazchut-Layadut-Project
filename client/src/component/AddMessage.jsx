@@ -1,4 +1,4 @@
-import { useAddManagerMutation } from "./managerApiSlice";
+import { useAddMessageMutation } from "./messagesApiSlice";
 import React, {useRef, useState } from "react";
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
@@ -6,12 +6,12 @@ import { InputText } from "primereact/inputtext";
 import { Controller, useForm } from 'react-hook-form';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
-import { useRegisterMutation } from "../app/authApiSlice";
+import { Editor } from "primereact/editor";
 
-const  AddMessage=(props)=> {
+const  AddMessage=()=> {
     const [visible, setVisible] = useState(false);
     const toast = useRef(null);
-    const [register, {isError, isSuccess, error}] =useRegisterMutation()
+    const [register, {isError, isSuccess, error}] =useAddMessageMutation()
     const show = () => {
         toast.current.show({ severity: 'success', summary: 'הודעה נוספה בהצלחה!', detail: getValues('value') });
     };
@@ -98,7 +98,7 @@ const  AddMessage=(props)=> {
             ></Dialog>
         </div>
     )
-    
+
 }
 export default AddMessage      
 
