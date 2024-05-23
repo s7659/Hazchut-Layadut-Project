@@ -2,8 +2,11 @@ const Message = require("../models/Messages");
 
 
 const getAllMessages=async(req,res)=>{
+    console.log("11111111111111111111111111111111111🤣😂😊😊");
     const messages=await Message.find().lean()
+    console.log(messages);
     res.json(messages)
+    console.log("❤🤣😂😂😊"+messages)
 }
 
 const createNewMessage=async(req,res)=>{

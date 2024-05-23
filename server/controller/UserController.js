@@ -7,6 +7,7 @@ const getAllManagers = async (req, res) => {
     
     }
     res.json(users)
+    console.log(users);
 }
 const getAllUsers = async (req, res) => {
     const users = await Users.find({roles:'refresh'}).lean()
